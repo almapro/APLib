@@ -26,3 +26,27 @@ Using **APLib** can be complex, but let's start step-by-step:
       `\APLib\Response\Body::add("<h3>Hello code</h3>");`  
    5. Run the library to deliver your page:  
       `\APLib\Core::run();`
+
+## Structure
+APLib's structure is very easy to understand.  
+You can find anything in a class path related to the usage path.
+
+For example:  
+   If you need to print a JavaScript code in the body of the page, then go as follows:  
+   Response -> Body -> JavaScript -> Add  
+   In code:  
+   `\APLib\Response\Body\JavaScript::add("// CODE HERE");`
+
+   If there's a response, there must be a request.  
+   If you want to check if the request was a POST request, then do as follows:  
+   Request -> HTTP -> POST  
+   In code:  
+   ```
+   if(\APLib\Request\HTTP::post())
+   {
+     // Do some post handling here
+   }
+   ```
+
+Now with this explanation of how **APLib** is structured, you can find pretty much everything.  
+You can see the [wiki](https://github.com/almapro/APLib/wiki/) for a better understanding of what **APLib** is capable of.
