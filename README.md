@@ -31,15 +31,16 @@ Using **APLib** can be complex, but let's start step-by-step:
 APLib's structure is very easy to understand.  
 You can find anything in a class path related to the usage path.
 
-For example:  
-   If you need to print a JavaScript code in the body of the page, then go as follows:  
-   Response -> Body -> JavaScript -> Add  
+* If you need to print a JavaScript code in the body of the page, then go as follows:  
+      Response -> Body -> JavaScript -> Add  
    In code:  
-   `\APLib\Response\Body\JavaScript::add("// CODE HERE");`
+   ```
+   \APLib\Response\Body\JavaScript::add("// CODE HERE");
+   ```
 
-   If there's a response, there must be a request.  
+* If there's a response, there must be a request.  
    If you want to check if the request was a POST request, then do as follows:  
-   Request -> HTTP -> POST  
+      Request -> HTTP -> POST  
    In code:  
    ```
    if(\APLib\Request\HTTP::post())
