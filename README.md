@@ -32,7 +32,9 @@ APLib's structure is very easy to understand.
 You can find anything in a class path related to the usage path.
 
 * If you need to print a JavaScript code in the body of the page, then go as follows:  
-      Response -> Body -> JavaScript -> Add  
+   ```
+   Response -> Body -> JavaScript -> Add
+   ```
    In code:  
    ```
    \APLib\Response\Body\JavaScript::add("// CODE HERE");
@@ -40,7 +42,9 @@ You can find anything in a class path related to the usage path.
 
 * If there's a response, there must be a request.  
    If you want to check if the request was a POST request, then do as follows:  
-      Request -> HTTP -> POST  
+   ```
+   Request -> HTTP -> POST
+   ```
    In code:  
    ```
    if(\APLib\Request\HTTP::post())
