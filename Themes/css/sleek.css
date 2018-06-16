@@ -1,0 +1,106 @@
+/* -------------------------------------------------------------------------------------- */
+/* -- Sleek - Theme inspiration by Rikon Rahman (https://twitter.com/rikonrahman)      -- */
+/* -- URL: https://dribbble.com/shots/3024790-Sleek-Multipurpose-Creative-PSD-Template -- */
+/* -------------------------------------------------------------------------------------- */
+body, html{
+  width: 100 !important;
+}
+body{
+  background-color: #272737;
+}
+body.sleek{
+  background: URL('../../imgs/1.jpg') no-repeat;
+  background-size: cover;
+}
+.sleek-container{
+  opacity: 0.5;
+  background-color: #272727;
+  width: 90%;
+  height: 100% !important;
+  position: relative;
+  top: 25px;
+  margin-left: 5%;
+}
+.sleek-navbar{
+  opacity: 1 !important;
+  display: block;
+  width: 90%;
+  margin-left: 5%;
+  height: 70px;
+  background-color: transparent;
+  color: #CCCCCC;
+  border-bottom: #A0A0A0 1px solid;
+}
+.sleek-navbar.sleek-top{
+  position: relative;
+  top: 15px;
+}
+.sleek-navbar > .sleek-nav{
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  float: left;
+  margin-left: 15px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  padding-top: 20px;
+  margin-right: 5px;
+}
+.sleek-navbar > .sleek-nav:hover:not(.sleek-rounded),
+.sleek-navbar > .sleek-nav.active{
+  color: #F3F3F3;
+  border-bottom: #F3F3F3 2px solid;
+  font-size-adjust: 0.4;
+}
+.sleek-navbar > .sleek-nav.active{
+  border-bottom-color: #A0A0A0;
+  font-size-adjust: none;
+}
+.sleek-right{
+  float: right !important;
+  margin-right: 0 !important;
+}
+.sleek-left{
+  float: left !important;
+  margin-left: 0 !important;
+}
+.sleek-rounded{
+  height: 50px;
+  width: 100px !important;
+  border: #F3F3F3 1px solid;
+  border-radius: 25px;
+  padding-top: 14px !important;
+}
+.sleek-rounded:hover{
+  color: #F3F3F3;
+  border-width: 2px;
+  padding-top: 13px !important;
+  font-size-adjust: 0.5;
+}
+.sleek-jumbo{
+  font-size: 100px;
+  text-align: center;
+  color: white;
+  opacity: 1 !important;
+}
+.sleek-jumbo > .sleek-jumbo-desc{
+  font-size: 25px;
+}
+@media (max-height: 705px){
+  .sleek-container{
+    padding-bottom: 9%;
+  }
+  .sleek-jumbo{
+    margin-top: 15%;
+  }
+}
+@media (min-height: 706px){
+  .sleek-container{
+    padding-bottom: 17%;
+  }
+  .sleek-jumbo{
+    margin-top: 20%;
+  }
+}

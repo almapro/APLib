@@ -1,0 +1,70 @@
+/* --------------------------------------------------------------------------------------- */
+/* -- Client Login - Form inspiration by Rikon Rahman (https://twitter.com/rikonrahman) -- */
+/* -- URL: https://dribbble.com/shots/1351676-Client-Login-Form-Design                  -- */
+/* --------------------------------------------------------------------------------------- */
+.clientlogin{
+  opacity: 0.7;
+  width: 300px !important;
+  height: 550px;
+}
+.clientlogin-header{
+  height: 10%;
+  display: block;
+  width: 100% !important;
+  font-size: 25px;
+}
+.clientlogin-header > *{
+  display: inline-block;
+}
+.clientlogin-header > .clientlogin-title{
+  width: 90% !important;
+  text-align: center;
+  background-color: #354A8B;
+  color: #E1E1F6;
+  float: left;
+}
+.clientlogin-header > .clientlogin-close{
+  width: 10% !important;
+  text-align: center;
+  background-color: #2C3454;
+  color: #A2A8D1;
+  float: right;
+}
+.clientlogin-body{
+  /* filter: blur(1px); */
+  height: 90%;
+  background-color: #5A6897;
+  color: #E1E1F6;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.clientlogin-indicator{
+  height: 5%;
+  display: block;
+  font-size: 15px;
+  padding-bottom: 15px;
+}
+.clientlogin-indicator > .clientlogin-status{
+  width: 100%;
+}
+.clientlogin-indicator > .clientlogin-bar{
+  display: inline-block;
+  color: #A2A8D1;
+}
+.clientlogin-indicator > .clientlogin-bar::before{
+  content: "ـــــــ";
+}
+.clientlogin-indicator > .clientlogin-bar.first::before{
+  content: '';
+}
+.clientlogin-indicator > .clientlogin-bar.first.active,
+.clientlogin-indicator > .clientlogin-bar.active{
+  color: #E1E1F6;
+}
+.clientlogin-footer{
+  display: block;
+}
+.clientlogin-footer > *{
+  display: inline-block;
+}

@@ -1,0 +1,8 @@
+{
+    "require": {
+        "geoip/geoip": "~1.16",
+        "geoip2/geoip2": "~2.0",
+        "phpseclib/phpseclib": "^2.0",
+        "phpfastcache/phpfastcache": "^7.0"
+    }
+}
