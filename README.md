@@ -14,14 +14,14 @@ A PHP library to create your website smooth, easy &amp; secure.
 Using **APLib** can be complex, but let's start step-by-step:  
    1. Include _APlib_ in your project:  
       `require_once('PATH/TO/APLib/core.php');`  
-   2. Optionally configure settings using *config*:  
+   2. Initiate the library:  
+     `\APLib\Core::init();`  
+   3. Optionally configure settings using *config* class:  
       `\APLib\Config::set('SETTING NAME', 'SETTING VALUE');`  
 
       For example:  
       `\APLib\Config::set('title', "My page's title");`  
       This will set the page's title (`<title>My page's title</title>`).
-   3. Initiate the library:  
-      `\APLib\Core::init();`  
    4. Add your body:  
       `\APLib\Response\Body::add("<h3>Hello code</h3>");`  
    5. Run the library to deliver your page:  
@@ -39,6 +39,7 @@ You can find anything in a class path related to the usage path.
    ```
    \APLib\Response\Body\JavaScript::add("// CODE HERE");
    ```
+   **NOTE:** The JavaScript code above is a code without `<script />` tags.
 
 * If there's a response, there must be a request.  
    If you want to check if the request was a POST request, then do as follows:  
@@ -54,4 +55,5 @@ You can find anything in a class path related to the usage path.
    ```
 
 Now with this explanation of how **APLib** is structured, you can find pretty much everything.  
+##### Wiki
 You can see the [wiki](https://github.com/almapro/APLib/wiki/) for a better understanding of what **APLib** is capable of.
