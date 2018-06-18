@@ -143,6 +143,11 @@
 					'caption'  =>  'jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.'
 				),
 				array(
+					'url'      =>  'https://jqueryui.com/',
+					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/jquery-ui.png'),
+					'alt'      =>  'jQuery UI',
+					'caption'  =>  'jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library. Whether you\'re building highly interactive web applications or you just need to add a date picker to a form control, jQuery UI is the perfect choice.'
+				),array(
 					'url'      =>  'https://getbootstrap.com/',
 					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/bootstrap.png'),
 					'alt'      =>  'Bootstrap',
