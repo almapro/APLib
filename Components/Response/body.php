@@ -31,7 +31,7 @@
 		function show()
 		{
 			?>
-	<body>
+	<body<?php echo (\APLib\Config::get('direction') !== null) ? " dir='".\APLib\Config::get('direction')."'" : ''; ?>>
 <?php if(sizeof(\APLib\Response\Body\CSS::items()) > 0)
 { ?>
 		<style type="text/css">
