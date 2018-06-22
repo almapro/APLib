@@ -20,19 +20,19 @@
 
 		/**
 		 * Generate a random string
-     *
-     * @param   int     $length  how long the random string should be beginning [Default: 25]
+		 *
+		 * @param   int     $length  how long the random string should be beginning [Default: 25]
  		 * @param   string  $chars   all chars to be included in the string [Default: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789']
  		 *
 		 * @return  string
 		 */
 		public static function RandomString($length  =  25, $chars  =  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
 		{
-      $charslength    =  strlen($chars);
+			$charslength    =  strlen($chars);
 			$result         =  '';
 			for($i = 0; $i  <  $length; $i++){
-        $result      .=  $chars[rand(0, $charslength - 1)];
-      }
+				$result      .=  $chars[rand(0, $charslength - 1)];
+			}
 			return $result;
 		}
 
@@ -61,6 +61,18 @@
 				),
 				0
 			);
+		}
+
+		/**
+		 * Define HTMLPath constant
+		 *
+		 * @param   string  $path  the path to set
+		 *
+		 * @return  void
+		 */
+		public static function DefineHTML($path)
+		{
+			define('HTMLPath', static::NormalizePath(str_replace($_SERVER['DOCUMENT_ROOT'], '', $path))."/");
 		}
 	}
 ?>
