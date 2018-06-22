@@ -30,9 +30,9 @@
 		 *
 		 * @return  void
 		 */
-    public static function add($item)
+    public static function add($item, $rel = 'stylesheet')
 		{
-			array_push(static::$items, "<link rel=\"stylesheet\" href=\"{$item}\" />");
+			array_push(static::$items, "<link rel=\"{$rel}\" href=\"{$item}\" />");
 		}
 
     /**
