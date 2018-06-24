@@ -74,5 +74,17 @@
 		{
 			define('HTMLPath', static::NormalizePath(str_replace($_SERVER['DOCUMENT_ROOT'], '', $path))."/");
 		}
+
+		/**
+		 * Define ath constant
+		 *
+		 * @param   string  $path  the path to set
+		 *
+		 * @return  void
+		 */
+		public static function DefinePATH($path)
+		{
+			define('Path', static::NormalizePath($path)."/");
+		}
 	}
 ?>
