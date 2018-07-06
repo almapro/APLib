@@ -40,7 +40,7 @@
 				array(
 					array(
 						'charset',
-						'utf-8'
+						'UTF-8'
 					)
 				)
 			);

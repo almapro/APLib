@@ -52,8 +52,8 @@
 							'command'    =>  'disable',
 							'reason'     =>  'Front-End is disabled',
 							'placement'  =>  array(
-								'from'     =>  'bottom',
-								'align'    =>  'left'
+								'from'   =>  'bottom',
+								'align'  =>  'left'
 							)
 						)
 					)
@@ -68,17 +68,15 @@
 						'html'      =>  static::$data['html']
 					);
 					break;
-
 				case 'disabled':
 					$response  =  array(
 						'command'    =>  'enable',
 						'placement'  =>  array(
-							'from'     =>  'bottom',
-							'align'    =>  'left'
+							'from'   =>  'bottom',
+							'align'  =>  'left'
 						)
 					);
 					break;
-
 				default:
 					foreach(static::$items as $item)
 					{
@@ -103,8 +101,8 @@
 										'message'    =>  $e->getMessage(),
 										'type'       =>  'error',
 										'placement'  =>  array(
-											'from'     =>  'bottom',
-											'align'    =>  'left'
+											'from'   =>  'bottom',
+											'align'  =>  'left'
 										)
 									);
 								}
@@ -113,10 +111,10 @@
 						}
 					}
 					break;
-
 			}
-			if(\APLib\Config::get('Verbose')  ==  true) $response['verbose']  =  true;
+			if(\APLib\Config::get('verbose')  ==  true) $response['verbose']  =  true;
 			else $response['verbose']  =  false;
+			if(\APLib\Config::get('interval')  !=  null) $response['interval']  =  \APLib\Config::get('interval');
 			die(json_encode($response));
 		}
 	}

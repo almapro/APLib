@@ -72,6 +72,7 @@
 		 */
 		public static function DefineHTML($path)
 		{
+			$path = str_replace('\\', '/', $path);
 			define('HTMLPath', static::NormalizePath(str_replace($_SERVER['DOCUMENT_ROOT'], '', $path))."/");
 		}
 
@@ -84,6 +85,8 @@
 		 */
 		public static function DefinePATH($path)
 		{
+			$path = str_replace('\\', '/', $path);
+			$path = (substr($path, 2, 1) == ':') ? substr($path, 1) : $path;
 			define('Path', static::NormalizePath($path)."/");
 		}
 	}
