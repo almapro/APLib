@@ -82,6 +82,9 @@
 			);
       spl_autoload_register(function($class)
     	{
+				$libPath = str_replace('\\', '/', __DIR__);
+				define('APLibPath', $libPath);
+				define('APLibHTML', str_replace($_SERVER['DOCUMENT_ROOT'], '', $path)."/");
     		try
     		{
     			static::$loaded_files  =  array();
@@ -108,13 +111,14 @@
 							if($namespace  !=  $item['namespace']) continue;
 							if($path_subs  !=  null &&  sizeof($path_subs) > 0)
 							{
-								$search_sub   =  __DIR__.$item['path'];
+								$search_sub   =  $libPath.$item['path'];
 								foreach($path_subs as $path_sub)
 								{
 									if($path_sub  ==  '') continue;
 									$search_sub   .=  $path_sub.'/';
-									$search_path   =  $search_sub.$class_name.'.php';
-									if(in_array(realpath($search_path), static::$loaded_files)) continue;
+									$search_path   =  \APLib\Extras::NormalizePath($search_sub.$class_name.'.php');
+									$search_path   =  (substr($search_path, 1, 1) == ':') ? str_replace('/', '\\', $search_path) : $search_path;
+									if(in_array($search_path, static::$loaded_files)) continue;
 									if(file_exists($search_path))
 									{
 										include $search_path;
@@ -122,7 +126,7 @@
 									}
 								}
 							}
-							$search_path    =  __DIR__.$item['path'].$class_name.".php";
+							$search_path    =  $libPath.$item['path'].$class_name.".php";
 							if(in_array(realpath($search_path), static::$loaded_files)) continue;
 							if(file_exists($search_path))
 							{
@@ -148,7 +152,7 @@
 									}
 								}
 							}
-							$search_path    =  __DIR__.$item['path'].$class_name.".php";
+							$search_path    =  $libPath.$item['path'].$class_name.".php";
 							if(in_array(realpath($search_path), static::$loaded_files)) continue;
 							if(file_exists($search_path))
 							{

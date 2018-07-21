@@ -45,7 +45,7 @@
 		 */
 		public static function NormalizePath($path)
 		{
-			return array_reduce(
+			$ret = array_reduce(
 				explode('/', $path),
 				create_function(
 					'$a, $b',
@@ -55,12 +55,14 @@
 						if($b === "" || $b === ".")
 							return $a;
 						if($b === "..")
-							return dirname($a);
+							return str_replace("\\\\", "/", dirname($a));
 						return preg_replace("/\/+/", "/", "$a/$b");
 					'
 				),
 				0
 			);
+			$ret = (substr($ret, 2, 1) == ':') ? substr($ret, 1) : $ret;
+			return $ret;
 		}
 
 		/**
