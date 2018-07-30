@@ -80,11 +80,12 @@
 					'path'       =>  '/../'
 				)
 			);
+			$libPath = str_replace('\\', '/', __DIR__);
+			define('APLibPath', $libPath);
+			define('APLibHTML', str_replace($_SERVER['DOCUMENT_ROOT'], '', $libPath)."/");
       spl_autoload_register(function($class)
     	{
 				$libPath = str_replace('\\', '/', __DIR__);
-				define('APLibPath', $libPath);
-				define('APLibHTML', str_replace($_SERVER['DOCUMENT_ROOT'], '', $path)."/");
     		try
     		{
     			static::$loaded_files  =  array();
