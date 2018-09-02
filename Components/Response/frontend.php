@@ -13,20 +13,20 @@
 	namespace APLib\Response;
 
 	/**
-	 * Initiate APLib Front-End JS app
-	 *
-	 * @return  void
-	 */
-	public static function init()
-	{
-		\APLib\Response\Body\JavaScript::add('		APLib();');
-	}
-
-	/**
 	 * FrontEnd - Front-End JS app container
 	 */
 	class FrontEnd Extends \APLib\Container
 	{
+		
+		/**
+		* Initiate APLib Front-End JS app
+		*
+		* @return  void
+		*/
+		public static function init()
+		{
+			\APLib\Response\Body\JavaScript::add('		APLib();');
+		}
 
 		/**
 		 * @var  array  $items  an array containing costume FrontEnd commands
