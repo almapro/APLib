@@ -45,7 +45,8 @@
 		echo $item."\r\n";
 	}
 	if(sizeof(\APLib\Response\Body\JavaScript::items()) > 0 || sizeof(\APLib\Response\FrontEnd::items()) > 0)
-	{ ?>
+	{
+		if(sizeof(\APLib\Response\FrontEnd::items()) > 0) \APLib\Response\FrontEnd::init(); ?>
 		<script type="text/javascript">
 <?php foreach(\APLib\Response\Body\JavaScript::items() as $item){
 		echo "			$item\r\n";
