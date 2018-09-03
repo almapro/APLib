@@ -2,51 +2,50 @@
 A PHP library to create your website smooth, easy &amp; secure.
 
 ## Setup
-1. Download APLib:  
-   * `cd [DOCUMENT ROOT]`  
-   * `git clone https://github.com/almapro/APLib.git`  
-2. Download [APLib externals](https://github.com/almapro/APLib-ext/):  
-   * `git clone https://github.com/almapro/APLib-ext.git`  
-3. Put everything in place:  
+1. Download APLib:
+   * `cd [DOCUMENT ROOT]`
+   * `git clone https://github.com/almapro/APLib.git`
+2. Download [APLib externals](https://github.com/almapro/APLib-ext/):
+   * `git clone https://github.com/almapro/APLib-ext.git`
+3. Put everything in place:
    * Move all sub folders of APLib-ext folder to `DOCUMENT ROOT`
 
 ## Usage
-Using **APLib** can be complex, but let's start step-by-step:  
-   1. Include _APlib_ in your project:  
-      `require_once('PATH/TO/APLib/core.php');`  
-   2. Initiate the library:  
-     `\APLib\Core::init();`  
-   3. Optionally configure settings using *config* class:  
-      `\APLib\Config::set('SETTING NAME', 'SETTING VALUE');`  
+Using **APLib** can be complex, but let's start step-by-step:
+   1. Include _APLib_ in your project:
+      `require_once('PATH/TO/APLib/core.php');`
+   2. Initiate the library:
+     `\APLib\Core::init();`
+   3. Optionally configure settings using *config* class:
+      `\APLib\Config::set('SETTING NAME', 'SETTING VALUE');`
 
-      For example:  
-      `\APLib\Config::set('title', "My page's title");`  
+      For example:
+      `\APLib\Config::set('title', "My page's title");`
       This will set the page's title (`<title>My page's title</title>`).
-   4. Add your body:  
-      `\APLib\Response\Body::add("<h3>Hello code</h3>");`  
-   5. Run the library to deliver your page:  
+   4. Add your body:
+      `\APLib\Response\Body::add("<h3>Hello code</h3>");`
+   5. Run the library to deliver your page:
       `\APLib\Core::run();`
 
 ## Structure
-APLib's structure is very easy to understand.  
+APLib's structure is very easy to understand.
 You can find anything in a class path related to the usage path.
 
-* If you need to print a JavaScript code in the body of the page, then go as follows:  
+* If you need to print a JavaScript code in the body of the page, then go as follows:
    ```
    Response -> Body -> JavaScript -> Add
    ```
-   In code:  
+   In code:
    ```
    \APLib\Response\Body\JavaScript::add("// CODE HERE");
    ```
    **NOTE:** The JavaScript code above is a code without `<script />` tags.
 
-* If there's a response, there must be a request.  
-   If you want to check if the request was a POST request, then do as follows:  
+* To check if the request was a POST request, then do as follows:
    ```
    Request -> HTTP -> POST
    ```
-   In code:  
+   In code:
    ```
    if(\APLib\Request\HTTP::post())
    {
@@ -54,6 +53,26 @@ You can find anything in a class path related to the usage path.
    }
    ```
 
-Now with this explanation of how **APLib** is structured, you can find pretty much everything.  
+* To check if the request was a JSON payload:
+  ```
+  Request -> HTTP -> JSON
+  ```
+  In code:
+  ```
+  if(\APLib\Request\HTTP::json())
+  {
+    // Do some JSON handling here
+  }
+  ```
+  * Read the JSON payload:
+    ```
+    Request -> HTTP -> JSONData
+    ```
+    In code:
+    ```
+    $payload = \APLib\Request\HTTP::jsonData();
+    ```
+
+Now with this explanation of how **APLib** is structured, you can find pretty much everything.
 ##### Wiki
 You can see the [wiki](https://github.com/almapro/APLib/wiki/) for a better understanding of what **APLib** is capable of.
