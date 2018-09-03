@@ -172,7 +172,14 @@
 				}
 			}
 			if($info != null) return $info;
-			$rec = dns_get_record('www.geoplugin.net');
+			try {
+				$rec = dns_get_record('www.geoplugin.net');
+			}
+			catch (\Exception $e)
+			{
+				\APLib\Logger::Error($e);
+				$rec = null;
+			}
 	    if(!$rec) return null;
 			if(filter_var($ip, FILTER_VALIDATE_IP))
 			{
