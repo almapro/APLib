@@ -207,9 +207,11 @@
 		/**
 		 * Identify the client's OS, Agent, IP, Country ...etc
 		 *
+		 * @param   bool  $iplookup  Whether or not to lookup the IP [Default: false]
+		 *
 		 * @return  array
 		 */
-		public static function identify()
+		public static function identify($iplookup = false)
 		{
 			$os_platform  =  "Unknown OS Platform";
 			$os_array     =  array(
@@ -265,7 +267,7 @@
 					break;
 				}
 			}
-			$info  =  static::lookup();
+			$info  =  ($iplookup) ? static::lookup() : null;
 			if($info  ==  null)
 			{
 				$info  =  array(
@@ -408,6 +410,7 @@
 		 */
 		public static function run()
 		{
+			if(\APLib\Config::get('Boost performance') && isset($_GET['boost'])) return;
 			if(\APLib\Config::get('Secure params\' warning') === true && static::$riskLevel < 2) static::$riskLevel  =  2;
 			if(!\APLib\Request\HTTP::post() || !\APLib\Request\HTTP::json())
 			{
