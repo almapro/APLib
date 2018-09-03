@@ -13,18 +13,24 @@ A PHP library to create your website smooth, easy &amp; secure.
 ## Usage
 Using **APLib** can be complex, but let's start step-by-step:
    1. Include _APLib_ in your project:
+
       `require_once('PATH/TO/APLib/core.php');`
    2. Initiate the library:
-     `\APLib\Core::init();`
-   3. Optionally configure settings using *config* class:
-      `\APLib\Config::set('SETTING NAME', 'SETTING VALUE');`
 
-      For example:
-      `\APLib\Config::set('title', "My page's title");`
-      This will set the page's title (`<title>My page's title</title>`).
-   4. Add your body:
+     `\APLib\Core::init();`
+     - Optionally configure settings using *config* class:
+
+        `\APLib\Config::set('SETTING NAME', 'SETTING VALUE');`
+
+        For example:
+
+        `\APLib\Config::set('title', "My page's title");`  
+        This will set the page's title (`<title>My page's title</title>`).
+   3. Add your body:
+
       `\APLib\Response\Body::add("<h3>Hello code</h3>");`
-   5. Run the library to deliver your page:
+   4. Run the library to deliver your page:
+
       `\APLib\Core::run();`
 
 ## Structure
