@@ -394,12 +394,10 @@
 		 */
 		public static function Index($file)
 		{
-			$path  =  str_replace(__DIR__, '', $file);
-			$path  =  str_replace('\\', '/', $file);
-			$path  =  str_repeat('/..', sizeof(explode('/', $path))-2).'/';
+			$path  =  APLibPath;
 			file_put_contents(
 				$file,
-				"<?php\r\n	require_once __DIR__.'{$path}core.php';\r\n	\APLib\Core::init();\r\n	\APLib\Security::run();\r\n?>"
+				"<?php\r\n	require_once '{$path}core.php';\r\n	\APLib\Core::init();\r\n	\APLib\Security::run();\r\n?>"
 			);
 		}
 
@@ -410,7 +408,6 @@
 		 */
 		public static function run()
 		{
-			if(\APLib\Config::get('Boost performance') && isset($_GET['boost'])) return;
 			if(\APLib\Config::get('Secure params\' warning') === true && static::$riskLevel < 2) static::$riskLevel  =  2;
 			if(!\APLib\Request\HTTP::post() || !\APLib\Request\HTTP::json())
 			{
