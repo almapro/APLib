@@ -15,8 +15,51 @@
 	/**
 	* Header - A class to control header
 	*/
-	class Header
+	class Header Extends \APLib\Container
 	{
+
+		/**
+		 * @var  array  $items  an array to contain custome header tags
+		 */
+		protected static $items  =  array();
+
+    /**
+		 * Add an item to contined items
+		 *
+		 * @param   string  $item  item to add
+		 *
+		 * @return  void
+		 */
+    public static function add($item)
+		{
+			array_push(static::$items, $item);
+		}
+
+    /**
+		 * Remove an item from the contained items
+		 *
+		 * @param   string/null  $item  item to remove
+		 *
+		 * @return  void
+		 */
+		public static function remove($item  =  null)
+		{
+			if($item  ==  null)
+			{
+				array_pop(static::$items);
+			}
+			else
+			{
+				for($i=0; $i < sizeof(static::$items); $i++)
+				{
+					if(static::$items[$i]  ==  $item)
+					{
+						array_splice(static::$items, $i, 1);
+						break;
+					}
+				}
+			}
+		}
 
 		/**
 		 * Initiate Header
@@ -25,16 +68,16 @@
 		 */
 		public static function init()
 		{
-			foreach(glob(__DIR__."/../../../css/*.css") as $css)
+			foreach(glob(APLibPath."../css/*.css") as $css)
 			{
-				\APLib\Response\Header\Link::add(\APLib\Extras::NormalizePath(LibPATH.'../css/'.basename($css)));
+				\APLib\Response\Header\Link::add(\APLib\Extras::NormalizePath(APLibHTML.'../css/'.basename($css)));
 			}
-			\APLib\Response\Header\Script::add(\APLib\Extras::NormalizePath(LibPATH.'../js/raphael.min.js'));
-			\APLib\Response\Header\Script::add(\APLib\Extras::NormalizePath(LibPATH.'../js/jquery.min.js'));
-			foreach(array_reverse(glob(__DIR__."/../../../js/*.js")) as $js)
+			\APLib\Response\Header\Script::add(\APLib\Extras::NormalizePath(APLibHTML.'../js/raphael.min.js'));
+			\APLib\Response\Header\Script::add(\APLib\Extras::NormalizePath(APLibHTML.'../js/jquery.min.js'));
+			foreach(array_reverse(glob(APLibPath."../js/*.js")) as $js)
 			{
 				if(basename($js)  !=  'jquery.min.js' && basename($js)  !=  'raphael.min.js')
-					\APLib\Response\Header\Script::add(\APLib\Extras::NormalizePath(LibPATH.'../js/'.basename($js)));
+					\APLib\Response\Header\Script::add(\APLib\Extras::NormalizePath(APLibHTML.'../js/'.basename($js)));
 			}
 			\APLib\Response\Header\Meta::add(
 				array(
@@ -81,16 +124,22 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-<?php foreach(\APLib\Response\Header\Meta::items() as $item){
+<?php
+	echo "		<title>".\APLib\Config::get('title')."</title>\r\n";
+	foreach(\APLib\Response\Header\Meta::items() as $item){
+		echo "		{$item}\r\n";
+	}
+	foreach(\APLib\Response\Header\Link::items() as $item)
+	{
+		echo "		{$item}\r\n";
+	}
+	foreach(\APLib\Response\Header\Script::items() as $item)
+	{
+		echo "		{$item}\r\n";
+	}
+	foreach(\APLib\Response\Header::items() as $item){
 		echo "		{$item}\r\n";
 	} ?>
-		<title><?php echo \APLib\Config::get('title'); ?></title>
-<?php foreach(\APLib\Response\Header\Link::items() as $item){
-			echo "		{$item}\r\n";
-		} ?>
-<?php foreach(\APLib\Response\Header\Script::items() as $item){
-			echo "		{$item}\r\n";
-		} ?>
 	</head>
 <?php
 		}

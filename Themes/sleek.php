@@ -26,7 +26,7 @@
      */
     public static function include()
     {
-      \APLib\Response\Header\Link::add(LibPATH.'Themes/css/sleek.css');
+      \APLib\Response\Header\Link::add(APLibHTML.'Themes/css/sleek.css');
     }
 
     /**

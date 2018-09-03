@@ -25,7 +25,7 @@
      */
     public static function include()
     {
-      \APLib\Response\Header\Link::add(LibPATH.'Themes/css/omniradiance.css');
+      \APLib\Response\Header\Link::add(APLibHTML.'Themes/css/omniradiance.css');
     }
   }
 ?>

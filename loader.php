@@ -81,7 +81,7 @@
 				)
 			);
 			$libPath = str_replace('\\', '/', __DIR__);
-			define('APLibPath', $libPath);
+			define('APLibPath', $libPath."/");
 			define('APLibHTML', str_replace($_SERVER['DOCUMENT_ROOT'], '', $libPath)."/");
       spl_autoload_register(function($class)
     	{

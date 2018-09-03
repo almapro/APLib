@@ -19,7 +19,17 @@
 	{
 
 		/**
-		 * @var  array  $items  an array to contain JavaScript functions
+		 * @var  array  $files  an array to contain JavaScript files
+		 */
+		private static $files  =  array();
+
+		public static function files()
+		{
+			return static::$files;
+		}
+
+		/**
+		 * @var  array  $items  an array to contain JavaScript includes
 		 */
 		protected static $items  =  array();
 
@@ -32,6 +42,7 @@
 		 */
     public static function add($item)
 		{
+			array_push(static::$files, $item);
 			array_push(static::$items, "<script type=\"text/javascript\" src=\"{$item}\"></script>");
 		}
 
@@ -46,6 +57,7 @@
 		{
 			if($item  ==  null)
 			{
+				array_pop(static::$files);
 				array_pop(static::$items);
 			}
 			else
@@ -54,6 +66,7 @@
 				{
 					if(static::$items[$i]  ==  "<script type=\"text/javascript\" src=\"{$item}\"></script>")
 					{
+						array_splice(static::$files, $i, 1);
 						array_splice(static::$items, $i, 1);
 						break;
 					}

@@ -63,7 +63,7 @@
 			),
 			array(
 				'title'      =>  'APLib',
-				'action'     =>  LibPATH,
+				'action'     =>  APLibHTML,
 				'id'         =>  'mainNav',
 				'collapses'  =>  '',
 				'sr text'    =>  'APLib Navbar'
@@ -114,108 +114,108 @@
 			array(
 				array(
 					'url'      =>  'http://php.net/manual/en/intro-whatis.php',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/PHP.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/PHP.png'),
 					'alt'      =>  'PHP',
 					'caption'  =>  'PHP (Hypertext Preprocessor): a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.'
 				),
 				array(
 					'url'      =>  'https://en.wikipedia.org/wiki/HTML5',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/html5.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/html5.png'),
 					'alt'      =>  'HTML5',
 					'caption'  =>  'HTML5 is a markup language used for structuring and presenting content on the World Wide Web. It is the fifth and current major version of the HTML standard.'
 				),
 				array(
 					'url'      =>  'https://en.wikipedia.org/wiki/JavaScript',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/js.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/js.png'),
 					'alt'      =>  'JavaScript',
 					'caption'  =>  'JavaScript (often abbreviated as JS): a high-level, dynamic, weakly typed, prototype-based, multi-paradigm, and interpreted programming language.'
 				),
 				array(
 					'url'      =>  'https://developer.mozilla.org/en/docs/Web/CSS/CSS3',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/css3.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/css3.png'),
 					'alt'      =>  'CSS3',
 					'caption'  =>  'CSS3 is the latest evolution of the Cascading Style Sheets language and aims at extending CSS2.1. It brings a lot of long-awaited novelties, like rounded corners, shadows, gradients, transitions or animations, as well as new layouts like multi-columns, flexible box or grid layouts.'
 				),
 				array(
 					'url'      =>  'https://jquery.com/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/jquery.svg'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/jquery.svg'),
 					'alt'      =>  'jQuery',
 					'caption'  =>  'jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.'
 				),
 				array(
 					'url'      =>  'https://jqueryui.com/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/jquery-ui.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/jquery-ui.png'),
 					'alt'      =>  'jQuery UI',
 					'caption'  =>  'jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library. Whether you\'re building highly interactive web applications or you just need to add a date picker to a form control, jQuery UI is the perfect choice.'
 				),array(
 					'url'      =>  'https://getbootstrap.com/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/bootstrap.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/bootstrap.png'),
 					'alt'      =>  'Bootstrap',
 					'caption'  =>  'Bootstrap is a free and open-source front-end web framework for designing websites and web applications.'
 				),
 				array(
 					'url'      =>  'http://fontawesome.io/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/fontawesome.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/fontawesome.png'),
 					'alt'      =>  'Font-Awesome',
 					'caption'  =>  'Font Awesome is a font and icon toolkit based on CSS and LESS. It was made by Dave Gandy for use with Twitter Bootstrap, and later was incorporated into the BootstrapCDN.'
 				),
 				array(
 					'url'      =>  'https://github.com/daneden/animate.css/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/animate.css.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/animate.css.png'),
 					'alt'      =>  'Animate.css',
 					'caption'  =>  'Animate.css is a bunch of cool, fun, and cross-browser animations for you to use in your projects. Great for emphasis, home pages, sliders, and general just-add-water-awesomeness.'
 				),
 				array(
 					'url'      =>  'https://www.highcharts.com/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/highcharts.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/highcharts.png'),
 					'alt'      =>  'HighCharts',
 					'caption'  =>  'Highcharts is a charting library written in pure JavaScript, offering an easy way of adding interactive charts to your web site or web application.'
 				),
 				array(
 					'url'      =>  'https://github.com/rendro/easy-pie-chart',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/easypiechart.jpg'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/easypiechart.jpg'),
 					'alt'      =>  'Easy Pie Chart',
 					'caption'  =>  'Easy Pie Chart is a lightweight plugin to draw simple, animated pie charts for single values.'
 				),
 				array(
 					'url'      =>  'http://bootstrap-notify.remabledesigns.com/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/bootstrap-notify.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/bootstrap-notify.png'),
 					'alt'      =>  'Bootstrap Notify',
 					'caption'  =>  'Bootstrap Notify formally known as Bootstrap notify was renamed at version 3.0.0. This project originally started out to be a pull request for <a href="https://github.com/ifightcrime/bootstrap-notify" target="_blank">ifightcrime\'s Bootstrap notify</a> plugin, but quickly grew into it\'s own. This is the reason the two plugins shared a name and I chose that it was time that my plugin got its own name.'
 				),
 				array(
 					'url'      =>  'https://select2.org',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/select2.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/select2.png'),
 					'alt'      =>  'Select2',
 					'caption'  =>  'The jQuery replacement for select boxes<BR><BR>Select2 gives you a customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options.'
 				),
 				array(
 					'url'      =>  'http://fancyapps.com/fancybox/3/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/fancybox.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/fancybox.png'),
 					'alt'      =>  'fancyBox3',
 					'caption'  =>  'jQuery lightbox script for displaying images, videos and more.<BR>Touch enabled, responsive and fully customizable. '
 				),
 				array(
 					'url'      =>  'http://gijsroge.github.io/tilt.js/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/tilt.js.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/tilt.js.png'),
 					'alt'      =>  'Tilt.js',
 					'caption'  =>  'A tiny requestAnimationFrame powered 60+fps lightweight parallax hover tilt effect for jQuery.'
 				),
 				array(
 					'url'      =>  'https://jonsuh.com/hamburgers/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/hamburgers.gif'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/hamburgers.gif'),
 					'alt'      =>  'Hamburgers',
 					'caption'  =>  'Tasty CSS-animated hamburgers.'
 				),
 				array(
 					'url'      =>  'http://chartjs.org/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/chart.js.svg'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/chart.js.svg'),
 					'alt'      =>  'Chart.js',
 					'caption'  =>  'Simple yet flexible JavaScript charting for designers & developers.'
 				),
 				array(
 					'url'      =>  'http://responsiveslides.com/',
-					'image'    =>  \APLib\Extras::NormalizePath(LibPATH.'../imgs/logos/responsiveslides.js.png'),
+					'image'    =>  \APLib\Extras::NormalizePath(APLibHTML.'../imgs/logos/responsiveslides.js.png'),
 					'alt'      =>  'ResponsiveSlides.js',
 					'caption'  =>  'Simple & lightweight responsive slider plugin (in 1kb).'
 				)

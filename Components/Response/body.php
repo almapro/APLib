@@ -46,16 +46,18 @@
 	}
 	if(sizeof(\APLib\Response\Body\JavaScript::items()) > 0 || sizeof(\APLib\Response\FrontEnd::items()) > 0)
 	{
-		if(sizeof(\APLib\Response\FrontEnd::items()) > 0) \APLib\Response\FrontEnd::init(); ?>
+		if(sizeof(\APLib\Response\FrontEnd::items()) > 0 && !\APLib\Config::get('Optimize')) \APLib\Response\FrontEnd::init(); ?>
 		<script type="text/javascript">
-<?php foreach(\APLib\Response\Body\JavaScript::items() as $item){
-		echo "			$item\r\n";
-	}
-	if(sizeof(\APLib\Response\FrontEnd::items()) > 0){ ?>
-			extraCommands = [<?php
+			window.onload = function(){
+<?php if(sizeof(\APLib\Response\FrontEnd::items()) > 0){ ?>
+				extraCommands = [<?php
 			foreach(\APLib\Response\FrontEnd::items() as $item){
 				echo "[ '{$item['command']}', '{$item['callback']}'], ";
 			} ?>];
+<?php	foreach(\APLib\Response\Body\JavaScript::items() as $item){
+					echo "				$item\r\n";
+				} ?>
+			}
 <?php } ?>
 		</script>
 <?php }?>

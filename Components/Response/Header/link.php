@@ -19,6 +19,16 @@
 	{
 
 		/**
+		 * @var  array  $files  an array to contain JavaScript files
+		 */
+		private static $files  =  array();
+
+		public static function files()
+		{
+			return static::$files;
+		}
+
+		/**
 		 * @var  array  $items  an array to contain JavaScript functions
 		 */
 		protected static $items  =  array();
@@ -32,6 +42,7 @@
 		 */
     public static function add($item, $rel = 'stylesheet')
 		{
+			if($rel == 'stylesheet') array_push(static::$files, $item);
 			array_push(static::$items, "<link rel=\"{$rel}\" href=\"{$item}\" />");
 		}
 
@@ -42,18 +53,20 @@
 		 *
 		 * @return  void
 		 */
-		public static function remove($item  =  null)
+		public static function remove($item  =  null, $rel = 'stylesheet')
 		{
 			if($item  ==  null)
 			{
+				array_pop(static::$files);
 				array_pop(static::$items);
 			}
 			else
 			{
 				for($i=0; $i < sizeof(static::$items); $i++)
 				{
-					if(static::$items[$i]  ==  "<link rel=\"stylesheet\" href=\"{$item}\" />")
+					if(static::$items[$i]  ==  "<link rel=\"{$rel}\" href=\"{$item}\" />")
 					{
+						array_splice(static::$files, $i, 1);
 						array_splice(static::$items, $i, 1);
 						break;
 					}

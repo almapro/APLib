@@ -48,6 +48,7 @@
 					\APLib\FrontEnd::init();
 				}
 			}
+			\APLib\Optimizer::init();
 			\APLib\Response::init();
 		}
 
@@ -67,16 +68,8 @@
 					\APLib\FrontEnd::run();
 				}
 			}
+			\APLib\Optimizer::run();
 			\APLib\Response::run();
 		}
 	}
-
-	/**
-	 * Define LibPATH
-	 */
-	$path           =  str_replace('\\', '/', realpath(__DIR__.'/').'/');
-	$document_root  =  str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
-	$lib_path       =  str_replace($document_root, '', $path);
-	$lib_path       =  (strpos($lib_path, '/') == 0) ? $lib_path : '/'.$lib_path;
-	define('LibPATH', $lib_path);
 ?>

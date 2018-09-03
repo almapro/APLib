@@ -17,7 +17,7 @@
 	 */
 	class FrontEnd Extends \APLib\Container
 	{
-		
+
 		/**
 		* Initiate APLib Front-End JS app
 		*
@@ -25,7 +25,7 @@
 		*/
 		public static function init()
 		{
-			\APLib\Response\Body\JavaScript::add('		APLib();');
+			\APLib\Response\Body\JavaScript::add('APLib();');
 		}
 
 		/**
