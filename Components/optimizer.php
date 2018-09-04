@@ -79,7 +79,7 @@
       $booster_content .= "\APLib\Core::init();\r\n";
       $booster_content .= "\$item = \APLib\Cache::getItem(\$name);\r\n";
       $booster_content .= "if(\$item->isHit() && !\$item->isExpired() && !\$item->isEmpty()){\r\n";
-      $booster_content .= " header('Cache-Control: max-age=86400');\r\n";
+      $booster_content .= " header('Cache-Control: max-age=864000');\r\n";
       $booster_content .= " \$files = \$item->get();\r\n";
       $booster_content .= " \$file  = \$files[\$_GET['file']];\r\n";
       $booster_content .= " \$last_modified  = filemtime('../'.\$file);\r\n";
