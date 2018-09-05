@@ -17,9 +17,9 @@ Using **APLib** can be complex, but let's start step-by-step:
       `require_once('PATH/TO/APLib/core.php');`
    2. Initiate the library:
 
-     `\APLib\Core::init();`
+      `\APLib\Core::init();`
 
-     - Optionally configure settings using *config* class:
+      - Optionally configure settings using *config* class:
 
         `\APLib\Config::set('SETTING NAME', 'SETTING VALUE');`
 
