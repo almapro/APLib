@@ -18,13 +18,14 @@ Using **APLib** can be complex, but let's start step-by-step:
    2. Initiate the library:
 
      `\APLib\Core::init();`
+
      - Optionally configure settings using *config* class:
 
         `\APLib\Config::set('SETTING NAME', 'SETTING VALUE');`
 
         For example:
 
-        `\APLib\Config::set('title', "My page's title");`  
+        `\APLib\Config::set('title', "My page's title");`
         This will set the page's title (`<title>My page's title</title>`).
    3. Add your body:
 
