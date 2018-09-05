@@ -53,17 +53,17 @@
 		/**
      * Get a language's name
      *
-     * @param   string  $lang  language's codes
+     * @param   string  $code  language's codes
      *
      * @return  string/null
      */
-    public static function name($lang)
+    public static function name($code)
     {
-      for($i=0; $i < sizeof(static::$langs); $i++)
-			{
-      	if(static::$langs[$i]['code']  ==  $lang) return static::$langs[$i]['name'];
-      }
-			return null;
+		foreach(static::$langs) as $lang)
+		{
+			if($lang['code']  ==  $code) return $lang['name'];
+		}
+		return null;
     }
 
     /**
@@ -76,62 +76,62 @@
      */
     public static function get($placeholder, $lang  =  null)
     {
-      if(sizeof(static::$langs) == 0) return null;
-      if($lang == null || sizeof(static::$langs) == 1)
-      {
-        $lang  =  static::$langs[0];
-      }
-      else
-      {
-        for($i=0; $i < sizeof(static::$langs); $i++)
-        {
-          if(static::$langs[$i]['code'] == $lang)
-          {
-            $lang  =  static::$langs[$i];
-            break;
-          }
-        }
-      }
-      foreach(static::$items as $phrase)
-      {
-        if(isset($phrase['placeholder']) && $phrase['placeholder'] == $placeholder && $phrase['lang'] == $lang['code']) return $phrase;
-      }
+    	if(sizeof(static::$langs) == 0) return null;
+		if($lang == null || sizeof(static::$langs) == 1)
+		{
+			$lang  =  static::$langs[0];
+		}
+		else
+		{
+			for($i=0; $i < sizeof(static::$langs); $i++)
+			{
+				if(static::$langs[$i]['code'] == $lang)
+				{
+					$lang  =  static::$langs[$i];
+					break;
+				}
+	  		}
+		}
+		foreach(static::$items as $phrase)
+		{
+    		if(isset($phrase['placeholder']) && $phrase['placeholder'] == $placeholder && $phrase['lang'] == $lang['code']) return $phrase;
+		}
     }
 
-		/**
-		 * Parse a string with all found phrases in a specific language
-		 *
-		 * @param   string       $data  a string to parse
-		 * @param   null/string  $lang  language code [Default: FIRST LANGUAGE]
-		 *
-		 * @return  string
-		 */
-		public static function parse($data, $lang  =  null)
+	/**
+	 * Parse a string with all found phrases in a specific language
+	 *
+	 * @param   string       $data  a string to parse
+	 * @param   null/string  $lang  language code [Default: FIRST LANGUAGE]
+	 *
+	 * @return  string
+	 */
+	public static function parse($data, $lang  =  null)
+	{
+		if(sizeof(static::$langs) == 0) return $data;
+		if($lang == null || sizeof(static::$langs) == 1)
 		{
-			if(sizeof(static::$langs) == 0) return $data;
-      if($lang == null || sizeof(static::$langs) == 1)
-      {
-        $lang  =  static::$langs[0];
-      }
-      else
-      {
-        for($i=0; $i < sizeof(static::$langs); $i++)
-        {
-          if(static::$langs[$i]['code'] == $lang)
-          {
-            $lang  =  static::$langs[$i];
-            break;
-          }
-        }
-      }
-			foreach(static::$items as $phrase)
+			$lang  =  static::$langs[0];
+		}
+		else
+		{
+			for($i=0; $i < sizeof(static::$langs); $i++)
 			{
-				if(strpos($data, $phrase['placeholder']) >= 0)
+				if(static::$langs[$i]['code'] == $lang)
 				{
-					if(isset($phrase['placeholder']) && $phrase['lang'] == $lang['code']) $data  =  str_replace($phrase['placeholder'], $phrase['value'], $data);
+					$lang  =  static::$langs[$i];
+					break;
 				}
 			}
-			return $data;
 		}
+		foreach(static::$items as $phrase)
+		{
+			if(strpos($data, $phrase['placeholder']) >= 0)
+			{
+				if(isset($phrase['placeholder']) && $phrase['lang'] == $lang['code']) $data  =  str_replace($phrase['placeholder'], $phrase['value'], $data);
+			}
+		}
+		return $data;
+	}
   }
 ?>
