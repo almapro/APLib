@@ -10,7 +10,7 @@
         /*******/
         public static function add($name, $desc, $for)
         {
-            $stmt = \APLib\DB::prepare("INSERT INTO privilages(name, description, fortype) VALUES(SELECT ?,?,?)");
+            $stmt = \APLib\DB::prepare("INSERT INTO privilages(name, description, fortype) SELECT * FROM (SELECT ?, ?, ?) WHERE NOT IN (SELECT name, description, fortype FROM privilages) LIMIT 1");
             $stmt->bind_param('sss', $name, $desc, $for);
             $stmt->execute();
             return ($stmt->affected_rows > 0);

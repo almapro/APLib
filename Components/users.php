@@ -97,7 +97,7 @@
 		public static function add($username, $type, $password, $sha256 = false)
 	    {
 			if(!$sha256) $password = hash('sha256', $password);
-			$stmt = \APLib\DB::prepare("INSERT INTO accounts(username, password, account_type) VALUES(?, ?, ?, ?, ?)");
+			$stmt = \APLib\DB::prepare("INSERT INTO accounts(username, password, account_type) SELECT * FROM (SELECT ?, ?, ?) WHERE NOT IN (SELECT username, password, account_type FROM accounts) LIMIT 1");
 			$stmt->bind_param('sss', $username, $password, $type);
 			$stmt->execute();
 			return ($stmt->affected_rows > 0);

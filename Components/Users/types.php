@@ -52,7 +52,7 @@
 
         public static function add($name, $desc)
         {
-            $stmt = \APLib\DB::prepare("INSERT INTO accounts_types(name, description) VALUES(?, ?)");
+            $stmt = \APLib\DB::prepare("INSERT INTO accounts_types(name, description) SELECT * FROM (SELECT ?, ?) WHERE NOT IN (SELECT name, description FROM accounts_types) LIMIT 1");
             $stmt->bind_param('ss', $name, $desc);
             $stmt->execute();
             return ($stmt->affected_rows > 0);
