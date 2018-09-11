@@ -38,8 +38,8 @@
     public static function add($token, $priv)
     {
       if(static::check($token, $priv)) return false;
-      $stmt  = \APLib\DB::prepare("INSERT INTO tokens_privs(token, priv_name) SELECT * FROM (SELECT ?, ?) WHERE NOT IN (SELECT token, priv_name FROM tokens_privs) LIMIT 1");
-      $stmt->bind_param('ss', $token, $priv);
+      $stmt  = \APLib\DB::prepare("INSERT INTO tokens_privs(token, priv_name) SELECT * FROM (SELECT ? AS token, ? AS priv_name) AS tmp WHERE NOT EXISTS (SELECT * FROM tokens_privs WHERE token = ?) LIMIT 1");
+      $stmt->bind_param('sss', $token, $priv, $token);
       $stmt->execute();
       $stmt->fetch();
       return ($stmt->affected_rows > 0);

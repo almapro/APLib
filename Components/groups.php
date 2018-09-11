@@ -149,8 +149,8 @@
     public static function add($name, $desc, $for)
     {
         $owner = (\APLib\Users\Sessions::logged()) ? \APLib\Users\Sessions::username() : '';
-        $stmt  = \APLib\DB::prepare("INSERT INTO privilages_groups(name, description, fortype) SELECT * FROM (SELECT ?, ?, ?) WHERE NOT IN (SELECT name, description, fortype FROM privilages_groups) LIMIT 1");
-        $stmt->bind_param('sss', $name, $desc, $for);
+        $stmt  = \APLib\DB::prepare("INSERT INTO privilages_groups(name, description, fortype) SELECT * FROM (SELECT ? AS name, ? AS description, ? AS fortype) AS tmp WHERE NOT EXISTS (SELECT * FROM privilages_groups WHERE name = ?) LIMIT 1");
+        $stmt->bind_param('ssss', $name, $desc, $for, $name);
         $stmt->execute();
         return ($stmt->affected_rows > 0);
     }

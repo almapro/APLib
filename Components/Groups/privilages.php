@@ -57,8 +57,8 @@
     public static function add($group, $priv)
     {
       if(static::check($group, $priv)) return false;
-      $stmt  = \APLib\DB::prepare("INSERT INTO groups_privs(name, priv_name) VALUES(?, ?)");
-      $stmt->bind_param('ss', $group, $priv);
+      $stmt  = \APLib\DB::prepare("INSERT INTO groups_privs(name, priv_name) SELECT * FROM (SELECT ? AS name, ? AS priv_name) AS tmp WHERE NOT EXISTS (SELECT * FROM groups_privs WHERE name = ?) LIMIT 1");
+      $stmt->bind_param('sss', $group, $priv, $group);
       $stmt->execute();
       return ($stmt->affected_rows > 0);
     }
