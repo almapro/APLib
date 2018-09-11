@@ -54,11 +54,10 @@
 			foreach(\APLib\Response\FrontEnd::items() as $item){
 				echo "[ '{$item['command']}', '{$item['callback']}'], ";
 			} ?>];
-<?php	foreach(\APLib\Response\Body\JavaScript::items() as $item){
+<?php } foreach(\APLib\Response\Body\JavaScript::items() as $item){
 					echo "				$item\r\n";
 				} ?>
 			}
-<?php } ?>
 		</script>
 <?php }?>
 	</body>

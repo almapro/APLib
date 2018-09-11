@@ -26,11 +26,12 @@ class Tokens
         username VARCHAR(60) NOT NULL,
         token VARCHAR(60) NOT NULL,
         INDEX (username),
-        INDEX (token),
-        PRIMARY KEY (id, username),
+        PRIMARY KEY (token),
         CONSTRAINT FK_users_token FOREIGN KEY (username) REFERENCES accounts(username) ON UPDATE CASCADE ON DELETE CASCADE
       ) ENGINE=INNODB"
     );
+    \APLib\Users\Tokens\Privilages::table();
+    \APLib\Privilages::table();
   }
 }
 

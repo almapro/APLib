@@ -67,6 +67,7 @@
 			}
 			catch(\Exception $e)
 			{
+				throw $e;
 				// \APLib\Logger::Error($args[0]);
 				\APLib\Logger::Error($e);
 			}

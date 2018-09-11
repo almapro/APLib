@@ -59,7 +59,7 @@
      */
     public static function name($code)
     {
-		foreach(static::$langs) as $lang)
+		foreach(static::$langs as $lang)
 		{
 			if($lang['code']  ==  $code) return $lang['name'];
 		}
