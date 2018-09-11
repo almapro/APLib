@@ -88,7 +88,6 @@
 
     public static function table()
     {
-        \APLib\Privilages::table();
         \APLib\DB::query(
             "CREATE TABLE IF NOT EXISTS tokens_privs(
               id INT NOT NULL AUTO_INCREMENT,
