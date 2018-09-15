@@ -117,6 +117,12 @@
 			 * You can start by adding your common calls.
 			 */
 
+ 			//////////////////////////////////////
+ 			// Security Check is Required Here //
+ 			////////////////////////////////////
+ 			header("Access-Control-Allow-Origin: *");
+ 			header("Access-Control-Allow-Headers: content-type");
+
 
 			/**
 			 * Multi language websites can use common phrases from below
