@@ -38,9 +38,6 @@
 		{
 			\APLib\Config::init();
 			\APLib\Config::common();
-			\APLib\Cache::init();
-			\APLib\Security::init();
-			\APLib\Logger::init();
 			if(\APLib\Request\HTTP::post())
 			{
 				if(\APLib\Request\HTTP::json())
@@ -48,6 +45,9 @@
 					\APLib\FrontEnd::init();
 				}
 			}
+			\APLib\Cache::init();
+			\APLib\Security::init();
+			\APLib\Logger::init();
 			\APLib\Optimizer::init();
 			\APLib\Response::init();
 		}
@@ -59,8 +59,6 @@
 		 */
 		public static function run()
 		{
-			\APLib\Security::run();
-			\APLib\Logger::run();
 			if(\APLib\Request\HTTP::post())
 			{
 				if(\APLib\Request\HTTP::json())
@@ -68,6 +66,8 @@
 					\APLib\FrontEnd::run();
 				}
 			}
+			\APLib\Security::run();
+			\APLib\Logger::run();
 			\APLib\Optimizer::run();
 			\APLib\Response::run();
 		}
