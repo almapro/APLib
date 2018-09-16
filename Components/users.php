@@ -103,10 +103,18 @@
 			return ($stmt->affected_rows > 0);
 		}
 
-	    public static function update($username, $email, $firstname, $lastname, $avatar)
+	    public static function update($username, $email, $firstname, $lastname)
 	    {
-			$stmt = \APLib\DB::prepare("UPDATE accounts SET email = ?, first_name = ?, last_name = ?, avatar = ? WHERE username = ?");
-			$stmt->bind_param('sssss', $email, $firstname, $lastname, $avatar, $username);
+			$stmt = \APLib\DB::prepare("UPDATE accounts SET email = ?, first_name = ?, last_name = ? WHERE username = ?");
+			$stmt->bind_param('ssss', $email, $firstname, $lastname, $username);
+			$stmt->execute();
+			return ($stmt->affected_rows > 0);
+		}
+
+		public static function avatar($username, $avatar)
+		{
+			$stmt = \APLib\DB::prepare("UPDATE accounts SET avatar = ? WHERE username = ?");
+			$stmt->bind_param('ss', $avatar, $username);
 			$stmt->execute();
 			return ($stmt->affected_rows > 0);
 		}
