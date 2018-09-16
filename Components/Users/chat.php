@@ -57,6 +57,17 @@
             return ($stmt->affected_rows > 0);
         }
 
+        public static function lastCID($username)
+        {
+            $stmt  = \APLib\DB::prepare("SELECT receiver FROM chat WHERE (receiver = ? AND beenRead = 1) OR sender = ? ORDER BY senddate DESC LIMIT 1");
+            $stmt->bind_param('s', $username);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($CID);
+            $stmt->fetch();
+            return $CID;
+        }
+
         public static function table()
         {
             \APLib\DB::query(
