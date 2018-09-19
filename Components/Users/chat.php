@@ -21,7 +21,7 @@
 
         public static function send($sender, $receiver, $message)
         {
-            $now  = date("m/j/Y g:i:s A");
+            $now  = strtotime(date("m/j/Y g:i:s A"));
             $stmt = \APLib\DB::prepare("INSERT INTO chat(sender, receiver, message, senddate) VALUES(?, ?, ?, ?)");
             $stmt->bind_param('ssss', $sender, $receiver, $message, $now);
             $stmt->execute();
@@ -40,7 +40,7 @@
 
         public static function unread($receiver)
         {
-            $now   = date("m/j/Y g:i:s A");
+            $now   = strtotime(date("m/j/Y g:i:s A"));
             $id    = null;
             $chats = array();
             $stmt  = \APLib\DB::prepare("SELECT id,sender,message,beenRead,senddate,receivedate,readdate FROM chat WHERE beenRead = 0 AND receiver = ? ORDER BY senddate DESC");
@@ -60,7 +60,7 @@
 
         public static function read($id)
         {
-            $now  = date("m/j/Y g:i:s A");
+            $now  = strtotime(date("m/j/Y g:i:s A"));
             $stmt = \APLib\DB::prepare("UPDATE chat SET beenRead = 1, readdate = ? WHERE id = ? AND beenRead = 0 AND readdate = NULL");
             $stmt->bind_param('is', $id, $now);
             $stmt->execute();
@@ -69,13 +69,13 @@
 
         public static function lastCID($username)
         {
-            $stmt  = \APLib\DB::prepare("SELECT receiver FROM chat WHERE (receiver = ? AND beenRead = 1) OR sender = ? ORDER BY senddate DESC LIMIT 1");
+            $stmt  = \APLib\DB::prepare("SELECT sender,receiver FROM chat WHERE (receiver = ? AND beenRead = 1) OR sender = ? ORDER BY senddate DESC LIMIT 1");
             $stmt->bind_param('ss', $username, $username);
             $stmt->execute();
             $stmt->store_result();
-            $stmt->bind_result($CID);
+            $stmt->bind_result($sender, $receiver);
             $stmt->fetch();
-            return $CID;
+            return ($sender != $username) ? $sender : $receiver;
         }
 
         public static function table()
@@ -87,9 +87,9 @@
                     receiver VARCHAR(60) NOT NULL,
                     message TEXT NOT NULL,
                     beenRead boolean NOT NULL DEFAULT FALSE,
-                    senddate date NOT NULL,
-                    receivedate date NOT NULL,
-                    readdate date NOT NULL,
+                    senddate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    receivedate timestamp NOT NULL,
+                    readdate timestamp NOT NULL,
                     INDEX (sender),
                     INDEX (receiver),
                     PRIMARY KEY(id),
