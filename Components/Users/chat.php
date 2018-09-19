@@ -14,8 +14,8 @@
             $stmt->bind_param('ssii', $receiver, $sender, $offset, $limit);
             $stmt->execute();
             $stmt->store_result();
-            $stmt->bind_result($id, $message, $beenRead, $senddate, $receivedate, $readdate);
-            while($stmt->fetch()) array_push($chats, array('id' => $id, 'sender' => $sender, 'receiver' => $receiver, 'message' => $message, 'read' => $beenRead, 'send date' => $senddate, 'receive date' => $receivedate, 'read date' => $readdate));
+            $stmt->bind_result($id, $sender, $receiver, $message, $beenRead, $senddate, $receivedate, $readdate);
+            while($stmt->fetch()) array_push($chats, array($id => array('sender' => $sender, 'receiver' => $receiver, 'message' => $message, 'read' => $beenRead, 'send date' => $senddate, 'receive date' => $receivedate, 'read date' => $readdate)));
             return $chats;
         }
 
@@ -25,7 +25,17 @@
             $stmt = \APLib\DB::prepare("INSERT INTO chat(sender, receiver, message, senddate) VALUES(?, ?, ?, ?)");
             $stmt->bind_param('ssss', $sender, $receiver, $message, $now);
             $stmt->execute();
-            return ($stmt->affected_rows > 0);
+            if($stmt->affected_rows > 0)
+            {
+                $stmt = \APLib\DB::prepare("SELECT id FROM chat WHERE sender = ? AND receiver = ? AND message = ? AND senddate = ? LIMIT 1");
+                $stmt->bind_param('ssss', $sender, $receiver, $message, $now);
+                $stmt->execute();
+                $stmt->store_result();
+                $stmt->bind_result($id);
+                $stmt->fetch();
+                return $id;
+            }
+            return false;
         }
 
         public static function unread($receiver)
@@ -37,13 +47,13 @@
             $stmt->bind_param('s', $receiver);
             $stmt->execute();
             $stmt->store_result();
-            $stmt->bind_result($id, $message, $beenRead, $senddate, $receivedate, $readdate);
+            $stmt->bind_result($id, $sender, $message, $beenRead, $senddate, $receivedate, $readdate);
             $msg = \APLib\DB::prepare("UPDATE chat SET receivedate = ? WHERE id = ? AND receivedate = NULL");
             $msg->bind_param('si', $now, $id);
             while($stmt->fetch())
             {
                 $msg->execute();
-                array_push($chats, array('id' => $id, 'sender' => $sender, 'receiver' => $receiver, 'message' => $message, 'read' => $beenRead, 'send date' => $senddate, 'receive date' => $now, 'read date' => $readdate));
+                array_push($chats, array($id => array('sender' => $sender, 'receiver' => $receiver, 'message' => $message, 'read' => $beenRead, 'send date' => $senddate, 'receive date' => $now, 'read date' => $readdate)));
             }
             return $chats;
         }
