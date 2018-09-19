@@ -120,10 +120,10 @@
  			//////////////////////////////////////
  			// Security Check is Required Here //
  			////////////////////////////////////
-			header("Access-Control-Max-Age: 86400");
+			header("Access-Control-Max-Age: 3600");
  			header("Access-Control-Allow-Origin: *");
  			header("Access-Control-Allow-Methods: POST, GET");
- 			header("Access-Control-Allow-Headers: Content-Type, X-Backend-Token");
+ 			header("Access-Control-Allow-Headers: Content-Type, Authorization, Access-Control-Allow-Headers, X-Requested-With");
 
 
 			/**
