@@ -35,7 +35,7 @@
 		 */
 		public static function init()
 		{
-			static::$data  =  \APLib\Request\HTTP::jsonData();
+			static::$data  =  \APLib\Request\HTTP::data();
 		}
 
 		/**

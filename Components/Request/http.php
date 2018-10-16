@@ -65,11 +65,21 @@
 		private static $data  =  null;
 
 		/**
-		 * Return json data received
+		 * Set the $data variable
+		 *
+		 * @return void
+		 */
+		public static function setData($data)
+		{
+			static::$data = $data;
+		}
+
+		/**
+		 * Return data received
 		 *
 		 * @return  array
 		 */
-		public static function jsonData()
+		public static function data()
 		{
 			if(static::$data  !=  null) return static::$data;
 			if(static::json()) return json_decode(file_get_contents('php://input'), true);

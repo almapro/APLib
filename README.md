@@ -26,7 +26,7 @@ Using **APLib** can be complex, but let's start step-by-step:
         For example:
 
         `\APLib\Config::set('title', "My page's title");`
-        
+
         This will set the page's title (`<title>My page's title</title>`).
    3. Add your body:
 
@@ -74,11 +74,11 @@ You can find anything in a class path related to the usage path.
   ```
   * Read the JSON payload:
     ```
-    Request -> HTTP -> JSONData
+    Request -> HTTP -> Data
     ```
     In code:
     ```
-    $payload = \APLib\Request\HTTP::jsonData();
+    $payload = \APLib\Request\HTTP::data();
     ```
 
 Now with this explanation of how **APLib** is structured, you can find pretty much everything.

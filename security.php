@@ -52,7 +52,7 @@
 				{
 					if(\APLib\Request\HTTP::json())
 					{
-						static::$params_array  =  \APLib\Request\HTTP::jsonData();
+						static::$params_array  =  \APLib\Request\HTTP::data();
 					}
 					else
 					{
