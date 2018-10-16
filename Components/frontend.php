@@ -45,6 +45,7 @@
 		 */
 		public static function run()
 		{
+			// DEBUG: Deprecated
 			if(\APLib\Config::get('FrontEnd') != true)
 				die(
 					json_encode(
@@ -61,6 +62,7 @@
 			$response  =  array();
 			switch(static::$data['command'])
 			{
+				// DEBUG: Deprecated
 				case 'update':
 					$response  =  array(
 						'command'   =>  'update',
@@ -68,6 +70,7 @@
 						'html'      =>  static::$data['html']
 					);
 					break;
+				// DEBUG: Deprecated
 				case 'disabled':
 					$response  =  array(
 						'command'    =>  'enable',
@@ -114,6 +117,7 @@
 			}
 			if(\APLib\Config::get('verbose')  ==  true) $response['verbose']  =  true;
 			else $response['verbose']  =  false;
+			// DEBUG: Deprecated
 			if(\APLib\Config::get('interval')  !=  null) $response['interval']  =  \APLib\Config::get('interval');
 			die(json_encode($response));
 		}
