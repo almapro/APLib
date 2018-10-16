@@ -19,13 +19,14 @@
 	{
 
 		/**
+		* @deprecated
 		* Initiate APLib Front-End JS app
 		*
 		* @return  void
 		*/
 		public static function init()
 		{
-			\APLib\Response\Body\JavaScript::add('APLib();');
+			\APLib\Response\Body\JavaScript::add('APLib.Threads.add("refresh", function(){ APLib.API.connect({command: "refresh"}) }, 1000);');
 		}
 
 		/**

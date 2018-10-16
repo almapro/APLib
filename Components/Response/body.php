@@ -49,14 +49,14 @@
 		if(sizeof(\APLib\Response\FrontEnd::items()) > 0 && !\APLib\Config::get('Optimize')) \APLib\Response\FrontEnd::init(); ?>
 		<script type="text/javascript">
 			window.onload = function(){
-<?php if(sizeof(\APLib\Response\FrontEnd::items()) > 0){ ?>
-				extraCommands = [<?php
-			foreach(\APLib\Response\FrontEnd::items() as $item){
-				echo "[ '{$item['command']}', '{$item['callback']}'], ";
-			} ?>];
-<?php } foreach(\APLib\Response\Body\JavaScript::items() as $item){
-					echo "				$item\r\n";
-				} ?>
+<?php foreach(\APLib\Response\FrontEnd::items() as $item)
+		{
+			echo "APLib.Commands.set('{$item['command']}', {$item['callback']});";
+		}
+		foreach(\APLib\Response\Body\JavaScript::items() as $item)
+		{
+			echo "				$item\r\n";
+		} ?>
 			}
 		</script>
 <?php }?>
