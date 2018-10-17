@@ -6,6 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ad155f8f1cf0d418fe49e248db8c661b' => $vendorDir . '/react/promise/src/functions_include.php',
+    '6b06ce8ccf69c43a60a1e48495a034c9' => $vendorDir . '/react/promise-timer/src/functions.php',
+    '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
+    'a0edc8309cc5e1d60e3047b5df6b7052' => $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
     'a7cee959d5f14eb7484e7f8e7182e03d' => $vendorDir . '/geoip/geoip/src/geoip.inc',
     '8cf74b4cf02ad0591c257dcfb7edbc8d' => $vendorDir . '/geoip/geoip/src/geoipcity.inc',
     'd114bd5194e69687495c9150ff6be780' => $vendorDir . '/geoip/geoip/src/timezone.php',
