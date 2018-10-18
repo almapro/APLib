@@ -45,7 +45,7 @@
 		 */
 		public static function init()
 		{
-			static::$user_agent  =  $_SERVER['HTTP_USER_AGENT'];
+			static::$user_agent  =  (isset($_SERVER['HTTP_USER_AGENT'])) ? $_SERVER['HTTP_USER_AGENT'] : 'Unknown';
 			if(\APLib\Config::get('Secure params') != null)
 			{
 				if(\APLib\Request\HTTP::post())

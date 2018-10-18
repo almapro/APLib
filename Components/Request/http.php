@@ -45,7 +45,7 @@
 		 */
 		public static function post()
 		{
-			return ($_SERVER['REQUEST_METHOD']  ==  "POST");
+			return (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD']  ==  "POST");
 		}
 
 		/**
@@ -55,8 +55,7 @@
 		 */
 		public static function json()
 		{
-			if(!isset($_SERVER['CONTENT_TYPE'])) return false;
-			return (strpos($_SERVER['CONTENT_TYPE'], "application/json") !== false);
+			return (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], "application/json") !== false);
 		}
 
 		/**
