@@ -11,7 +11,7 @@
     {
         private static $server = null;
 
-        public static function init($port)
+        public static function init($port, $address = '127.0.0.1')
         {
             if(static::$server != null) return;
             static::$server = IoServer::factory(
@@ -20,7 +20,8 @@
                         new \APLib\WebSockets\Message()
                     )
                 ),
-                $port
+                $port,
+                $address
             );
         }
 
