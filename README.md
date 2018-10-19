@@ -84,3 +84,5 @@ You can find anything in a class path related to the usage path.
 Now with this explanation of how **APLib** is structured, you can find pretty much everything.
 ##### Wiki
 You can see the [wiki](https://github.com/almapro/APLib/wiki/) for a better understanding of what **APLib** is capable of.
+## Examples
+APLib now has a repository for examples: [https://github.com/almapro/APLib-Examples/](https://github.com/almapro/APLib-Examples/).
