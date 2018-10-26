@@ -6,53 +6,82 @@
      */
     class WebSockets
     {
+
         /**
-         * @var  SplObjectStorage  $connections  An SplObjectStorage to store active connections
+         * @var array $functions an array of functions to respond to all events
          */
-        private static $connections;
+        private static $functions = array();
 
         /**
-         * @var function $function a respond callback function
-         */
-        private static $respond = array();
-
-        public static function init($function)
-        {
-            static::$respond['function'] = $function;
-            static::$connections         = new \SplObjectStorage;
-        }
-
-        /**
-         * Respond to a message
+         * Initiate WebSockets
          *
-         * @param  $conn    Connection to reply to
-         * @param  $message A message to respond to
+         * @param  function $message a function to handle new messages
+         * @param  mixed    $events  an array containing functions to handle onOpen, onClose & onError events [Default: null]
          *
          * @return void
          */
-        public static function respond($conn, $message)
+        public static function init($message, $events = null)
         {
-            static::$respond['function']($conn, $message);
+            static::$functions['message'] = $message;
+            if($events != null)
+            {
+                if(isset($events['open']))  static::$functions['open']  = $events['open'];
+                if(isset($events['close'])) static::$functions['close'] = $events['close'];
+                if(isset($events['error'])) static::$functions['error'] = $events['error'];
+            }
+            \APLib\WebSockets\Connections::init();
         }
 
-        public static function add($conn)
+        /**
+         * Handle messages
+         *
+         * @param  Object $conn    Connection Object
+         * @param  string $message A message to handle
+         *
+         * @return void
+         */
+        public static function message($conn, $message)
         {
-            static::$connections->attach($conn, array('verified' => false, 'key' => null, 'ip' => $conn->remoteAddress));
+            static::$functions['message']($conn, $message);
         }
 
-        public static function remove($conn)
+        /**
+         * Handle an error
+         *
+         * @param  Object    $conn Connection Object
+         * @param  Exception $e    Error to handle
+         *
+         * @return void
+         */
+        public static function error($conn, $e)
         {
-            static::$connections->detach($conn);
+            if(isset(static::$functions['error'])) static::$functions['error']($conn, $e);
         }
 
-        public static function set($conn, $data)
+        /**
+         * Handle a new connection
+         *
+         * @param  Object $conn Connection Object
+         *
+         * @return void
+         */
+        public static function open($conn)
         {
-            static::$connections->offsetSet($conn, $data);
+            if(isset(static::$functions['open'])) static::$functions['open']($conn);
+            \APLib\WebSockets\Connections::add($conn, \APLib\Extras::RandomString());
         }
 
-        public static function get($conn)
+        /**
+         * Handle onClose event
+         *
+         * @param  Object $conn Connection Object
+         *
+         * @return void
+         */
+        public static function close($conn)
         {
-            return static::$connections->offsetGet($conn);
+            if(isset(static::$functions['close'])) static::$functions['close']($conn);
+            \APLib\WebSockets\Connections::remove($conn);
         }
     }
 
