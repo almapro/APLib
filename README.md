@@ -1,3 +1,7 @@
+# Been moved
+
+> This project has been moved to another repository: [https://github.com/alma3lol/APLib](https://github.com/alma3lol/APLib)
+
 # APLib
 A PHP library to create your website smooth, easy &amp; secure.
 
